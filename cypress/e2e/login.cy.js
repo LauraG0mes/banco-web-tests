@@ -6,6 +6,7 @@ describe('Login', () => {
 
     //Arrange
     cy.visit('http://localhost:4000')
+    cy.screenshot('apos-visitar-pagina')
   })
 
 
@@ -26,7 +27,9 @@ describe('Login', () => {
     //Act
     cy.get('#username').click().type('julio.lima')
     cy.get('#senha').click().type('654321')
+    cy.screenshot('apos-preencher-dados-invalidos')
     cy.get('#login-section > .btn').click()
+    cy.screenshot('apos-clicar-no-botao-de-entrar')
 
     //Assert
     cy.get('.toast').should('have.text', 'Erro no login. Tente novamente.')
